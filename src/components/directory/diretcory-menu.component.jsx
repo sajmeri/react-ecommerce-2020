@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./directory-menu.styles.scss";
 import MenuItem from "../menu-item/menu-item.component"
 
-class DirectoryMenu extends Component{
+class Directory extends Component{
 
     constructor(props){
         super(props);
@@ -12,7 +12,7 @@ class DirectoryMenu extends Component{
                   title: 'hats',
                   imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
                   id: 1,
-                  linkUrl: 'shop/hats'
+                  linkUrl: 'hats'
                 },
                 {
                   title: 'jackets',
@@ -48,8 +48,8 @@ class DirectoryMenu extends Component{
         return(
             <div className="directory-menu">
                 {                
-                    this.state.sections.map( ({id, title, imageUrl, size}) => 
-                        <MenuItem key={id} title={title} imageUrl={imageUrl} size={size} />
+                    this.state.sections.map( ({id, ...OtherMenuItems}) => 
+                        <MenuItem key={id} {...OtherMenuItems} />
                     )                    
                 }
             </div>
@@ -57,4 +57,4 @@ class DirectoryMenu extends Component{
     }
 }
 
-export default DirectoryMenu;
+export default Directory;
