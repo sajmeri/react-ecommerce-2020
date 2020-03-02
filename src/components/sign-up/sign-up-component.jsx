@@ -70,7 +70,7 @@ class SignIn extends Component{
                             required
                         />
                         <FormInput 
-                            label="passwork"
+                            label="password"
                             type="password"
                             name="password"
                             value={password}
