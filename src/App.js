@@ -50,7 +50,6 @@ class App extends Component {
     this.unsubscribeFromAuth();
   }
   render() {
-    console.log("currentUser", this.props.currentUser);
     const { currentUser } = this.props;
     return (
       <div className="App">
