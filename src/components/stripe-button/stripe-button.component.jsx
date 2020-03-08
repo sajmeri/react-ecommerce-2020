@@ -4,7 +4,7 @@ import  StripeCheckout  from "react-stripe-checkout";
 const StripeCheckoutButton = ({price}) =>{
     const priceforStripe = price * 100; //stripe accepts payment in cents
    
-    const stripePublisherKey ="pk_test_K6JXehmd3vH29yBnjE9TI8J700xEyKcrQY";
+    // const stripePublisherKey ="pk_test_K6JXehmd3vH29yBnjE9TI8J700xEyKcrQY";
     const onToken = token => {
         console.log(token);
         alert("Payment successful!");
