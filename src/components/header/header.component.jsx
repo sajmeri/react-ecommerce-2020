@@ -1,6 +1,6 @@
 import React from "react";
-import "./header.styles.scss";
-import {Link} from "react-router-dom";
+// import "./header.styles.scss"; //not used now becaues of styled-components 
+
 import {ReactComponent as Logo} from "../../assets/crown.svg";
 import { createStructuredSelector } from "reselect";
 import { auth } from "../../firebase/firebase.utils";
@@ -9,26 +9,30 @@ import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import { selectCurrentUser } from "../../redux/user/user.selectors";
 import { selectCartHidden } from "../../redux/cart/cart.selectors";
+import { HeaderContainer, LinkContainer, OptionsContainer, LinkOption } from "./header.styles";
 
 const Header = ({currentUser, hidden}) => (
-    <div className="header">
-        <Link className="logo-container" to= "/" >       
+    <HeaderContainer>
+        <LinkContainer to= "/" >       
             <Logo className="logo" to= "/" />        
-        </Link>
-        <div className="options">
-            <Link className="option" to="/shop">SHOP</Link>
-            <Link className="option" to ="/shop">CONTACT</Link>
+        </LinkContainer>
+        <OptionsContainer>
+            <LinkOption to="/shop">SHOP</LinkOption>
+            <LinkOption className="option" to ="/shop">CONTACT</LinkOption>
             {
             currentUser ? 
-            <div className="option" onClick={()=>auth.signOut()}>SIGN OUT</div> :
-            <Link className="option" to="/signin">SIGN IN</Link>
+            
+            <div onClick={()=>auth.signOut()}>SIGN OUT</div> :
+
+            // <LinkOption as div onClick={()=>auth.signOut()}>SIGN OUT</LinkOption> :
+            <LinkOption className="option" to="/signin">SIGN IN</LinkOption>
 
             }
             <CartIcon />  
-        </div>     
+        </OptionsContainer>     
         { hidden ? null : <CartDropdown /> }
                  
-    </div>
+    </HeaderContainer>
 )
 const mapStateToProps = createStructuredSelector({
     currentUser: selectCurrentUser,
