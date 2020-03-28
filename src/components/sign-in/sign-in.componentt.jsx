@@ -9,7 +9,7 @@ const SignIn = () =>{
    const {email, password} = userCredentials;
     const handleChange = event => {
         const {name, value} = event.target;    
-        setUserCredentials({[name]: value});
+        setUserCredentials({...userCredentials, [name]: value});
     }
 
     const handleSubmit = async event => {
